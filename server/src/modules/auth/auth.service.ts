@@ -1,11 +1,11 @@
 import jwt, { Secret } from "jsonwebtoken";
 import { IUser } from "./auth.model";
 
-const JWT_SECRET: Secret = process.env.JWT_SECRET || "defaultsecret";
-const JWT_REFRESH_SECRET: Secret = (process.env.JWT_REFRESH_SECRET as Secret) || "defaultrefresh";
-const ACCESS_EXPIRES = "15m" 
-const REFRESH_EXPIRES = "7d"
-
+const JWT_SECRET = "YogiiGoSuperSecret";
+const JWT_REFRESH_SECRET = "YogiiGoRefreshSecret";
+const ACCESS_EXPIRES = "90m"; 
+const REFRESH_EXPIRES = "7d";
+console.log(JWT_SECRET , JWT_REFRESH_SECRET ,'secret')
 export const generateTokens = (user: IUser) => {
   const accessToken = jwt.sign(
     { id: user._id, role: user.role },
