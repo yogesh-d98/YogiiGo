@@ -59,6 +59,35 @@ Test
 
 GET /api/v1/test/protected → Protected route (JWT + role-based access test)
 
+# Products & Categories Module
+
+This module manages product categories and products linked to stores.
+
+## Endpoints
+
+### Categories
+- `POST /api/v1/category` → Create a category
+- `GET /api/v1/category` → Get all categories
+- `GET /api/v1/category/:id` → Get category by ID
+- `PUT /api/v1/category/:id` → Update category
+- `DELETE /api/v1/category/:id` → Delete category
+
+### Products
+- `POST /api/v1/product` → Create a product
+- `GET /api/v1/product` → Get all products
+- `GET /api/v1/product/:id` → Get product by ID
+- `PUT /api/v1/product/:id` → Update product
+- `DELETE /api/v1/product/:id` → Delete product
+
+## Data Models
+
+### Category
+```ts
+{
+  name: string;
+  description?: string;
+  storeId: ObjectId;
+}
 
 ---
 
