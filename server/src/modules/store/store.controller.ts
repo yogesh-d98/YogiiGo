@@ -12,9 +12,13 @@ export async function createStore(req: Request, res: Response, next: NextFunctio
         if (!ownerId) return sendResponse(res, 401, 'Unauthorized');
 
         const { name, address, phone, isOpen, geo } = req.body;
-        const geoField = geo
-            ? { type: "Point" as const, coordinates: [geo.lng, geo.lat] as [number, number] }
+        const lat = req.body.lat ? Number(req.body.lat) : undefined;
+        const lng = req.body.lng ? Number(req.body.lng) : undefined;
+
+        const geoField = lat && lng
+            ? { type: 'Point' as 'Point', coordinates: [lng, lat] as [number, number] }
             : undefined;
+
 
         let avatarUrl = undefined;
         if (req.file && req.file.buffer) {
